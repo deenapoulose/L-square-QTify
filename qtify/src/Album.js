@@ -33,7 +33,7 @@ const Albums = ({ title, apiUrl }) => {
     <section className={styles.albums}>
       <h2>{title}</h2>
       <div className={styles.albumList}>
-        {albums.map((album, index) => (
+        {albums?.map((album, index) => (
           <Card key={album?.id || index} className={styles.albumCard}>
             <img src={album?.image} alt={album?.title} className={styles.albumImage} />
             <CardContent>
