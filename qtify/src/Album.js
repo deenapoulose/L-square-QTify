@@ -1,44 +1,50 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Chip } from "@mui/material";
-import styles from "./Album.module.css";
+import { Card, CardContent, Typography, Chip } from "@mui/material";
+import styles from "./Album.module.css"; // Adjust path if needed
 
-const Album = ({ title, apiUrl }) => {
-  const [albums, setAlbums] = useState([]);
+const Albums = ({ title, apiUrl }) => {
+  const [albums, setAlbums] = useState([]); // Ensure initial state is an array
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Fetch album data from API
   useEffect(() => {
-    const fetchAlbums = async () => {
-      try {
-        const response = await axios.get(apiUrl);
-        setAlbums(response.data); // Ensure data is stored correctly
-      } catch (error) {
-        console.error("Error fetching albums:", error);
-      }
-    };
-    fetchAlbums();
+    axios.get(apiUrl)
+      .then((response) => {
+        console.log("API Response:", response.data); // Debugging step
+        if (Array.isArray(response.data)) {
+          setAlbums(response.data);
+        } else {
+          console.error("Expected array but got:", response.data);
+          setAlbums([]); // Prevent errors in map()
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setError("Failed to load albums.");
+      })
+      .finally(() => setLoading(false));
   }, [apiUrl]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <section className={styles.albums}>
       <h2>{title}</h2>
       <div className={styles.albumList}>
-        {albums.length > 0 ? (
-          albums.map((album) => (
-            <div key={album.id} className={styles.albumCard}>
-              <img src={album.image} alt={album.title} className={styles.albumImage} />
-              <div className={styles.albumDetails}>
-                <h3>{album.title}</h3>
-                <Chip label={`${album.follows} Follows`} className={styles.followChip} />
-              </div>
-            </div>
-          ))
-        ) : (
-          <p>Loading albums...</p>
-        )}
+        {albums.map((album, index) => (
+          <Card key={album?.id || index} className={styles.albumCard}>
+            <img src={album?.image} alt={album?.title} className={styles.albumImage} />
+            <CardContent>
+              <Typography variant="h6">{album.title}</Typography>
+              <Chip label={`${album?.follows} Follows`} color="primary" />
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </section>
   );
 };
 
-export default Album;
+export default Albums;
