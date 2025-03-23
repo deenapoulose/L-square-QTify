@@ -13,14 +13,15 @@
     border-radius: 10px;
   }
   
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #1db954;
-    margin-left: 10px; /* Ensures spacing on the left */
+  .logoWrapper {
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
   }
   
-
+  .logo {
+    height: 40px; /* Adjust to match test case */
+    margin-left: 10px; /* Ensure left spacing */
+  }
   
   .searchBar {
     width: 250px;
@@ -30,18 +31,21 @@
   }
   
   .feedbackButton {
-    background-color: #000;
-    color: #1db954;
+    background-color: #000; /* Ensure black background */
+    color: #1db954; /* Ensure green text */
     border: 2px solid #1db954;
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "Poppins", sans-serif; /* Ensure correct font */
   }
   
   .feedbackButton:hover {
     background-color: #1db954;
     color: #000;
+    cursor: pointer;
   }
+  
   
   .hero {
     text-align: center;
