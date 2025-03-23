@@ -1,0 +1,42 @@
+.sectionContainer {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #121212;
+    border-radius: 10px;
+  }
+  
+  .sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .sectionContent {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .carouselWrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .showAllButton {
+    background-color: #34C94B;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .showAllButton:hover {
+    background-color: #2aa140;
+  }
+  

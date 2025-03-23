@@ -1,0 +1,43 @@
+.carouselContainer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .carouselWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .swiperContainer {
+    width: 100%;
+    padding: 20px 0;
+  }
+  
+  .swiperSlide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiperButton {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .swiperButton:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .hideNavigation {
+    display: none;
+  }
+  
