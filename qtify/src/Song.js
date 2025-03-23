@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Tabs, Tab } from "@mui/material";
-import Albums from "./Album"; // Reuse the Albums component for listing songs
+import Albums from "./Album"; // Reuse Albums component
 
 const Songs = () => {
   const [genres, setGenres] = useState([]);
@@ -10,7 +10,7 @@ const Songs = () => {
 
   useEffect(() => {
     axios.get("https://qtify-backend-labs.crio.do/genres")
-      .then((res) => setGenres(["All", ...res.data]))
+      .then((res) => setGenres(["All", ...(res.data.genres || res.data)]))
       .catch((err) => console.error("Failed to load genres:", err));
 
     axios.get("https://qtify-backend-labs.crio.do/songs")
@@ -18,9 +18,9 @@ const Songs = () => {
       .catch((err) => console.error("Failed to load songs:", err));
   }, []);
 
-  const filteredSongs = selectedGenre === "All" 
-    ? songs 
-    : songs.filter(song => song.genre === selectedGenre);
+  const filteredSongs = selectedGenre === "All"
+    ? songs
+    : songs.filter((song) => song.genre === selectedGenre);
 
   return (
     <div>
@@ -30,7 +30,7 @@ const Songs = () => {
           <Tab key={genre} label={genre} value={genre} />
         ))}
       </Tabs>
-      <Albums title="Songs" apiUrl="" data={filteredSongs} />
+      <Albums title="Songs" data={filteredSongs} /> {/* Remove apiUrl */}
     </div>
   );
 };
