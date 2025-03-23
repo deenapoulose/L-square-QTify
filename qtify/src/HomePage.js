@@ -6,14 +6,20 @@ import Albums from "./Album";
 import FAQ from "./Faq";
 import MusicPlayer from "./MusicPlayer";
 
-
 const HomePage = () => {
   return (
     <div className={styles.container}>
       <Navbar />
       <HeroSection />
-      <Albums title="Top Albums" />
-      <Albums title="New Albums" />
+      <Albums
+        title="Top Albums"
+        apiUrl="https://qtify-backend-labs.crio.do/albums/top"
+      />
+      <Albums
+        title="New Albums"
+        apiUrl="https://qtify-backend-labs.crio.do/albums/new"
+      />
+
       <Albums title="Songs" />
       <FAQ />
       <MusicPlayer />
