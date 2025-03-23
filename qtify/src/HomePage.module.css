@@ -4,11 +4,10 @@
     font-family: 'Poppins', sans-serif;
     padding: 20px;
   }
-  
   .navbar {
     display: flex;
+    align-items: center; /* Ensures vertical centering */
     justify-content: space-between;
-    align-items: center;
     background-color: #121212;
     padding: 15px 20px;
     border-radius: 10px;
@@ -18,7 +17,10 @@
     font-size: 1.5rem;
     font-weight: bold;
     color: #1db954;
+    margin-left: 10px; /* Ensures spacing on the left */
   }
+  
+
   
   .searchBar {
     width: 250px;
