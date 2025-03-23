@@ -13,11 +13,13 @@
 // );
 // export default Navbar;
 import styles from "./HomePage.module.css";
+import logo from "./logo.svg"; // Correct path
+
 
 const Navbar = () => (
   <nav className={styles.navbar}>
     <div className={styles.logoWrapper}>
-      <img src="/logo.png" alt="QTify Logo" className={styles.logo} />
+      <img src={logo} alt="QTify Logo" className={styles.logo} />
     </div>
     <input
       type="text"
