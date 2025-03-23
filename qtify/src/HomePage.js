@@ -5,6 +5,7 @@ import HeroSection from "./HeroSection";
 import Albums from "./Album";
 import FAQ from "./Faq";
 import MusicPlayer from "./MusicPlayer";
+import Songs from "./Song";
 
 const HomePage = () => {
   return (
@@ -20,7 +21,13 @@ const HomePage = () => {
         apiUrl="https://qtify-backend-labs.crio.do/albums/new"
       />
 
-      <Albums title="Songs" />
+{/* <Albums
+  title="Songs"
+  apiUrl="https://qtify-backend-labs.crio.do/songs"
+/> */}
+<Songs />
+
+
       <FAQ />
       <MusicPlayer />
     </div>

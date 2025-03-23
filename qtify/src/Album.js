@@ -9,7 +9,8 @@ const Albums = ({ title, apiUrl }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get(apiUrl)
+    axios
+      .get(apiUrl)
       .then((response) => {
         console.log("API Response:", response.data); // Debugging step
         if (Array.isArray(response.data)) {
@@ -35,10 +36,21 @@ const Albums = ({ title, apiUrl }) => {
       <div className={styles.albumList}>
         {albums?.map((album, index) => (
           <Card key={album?.id || index} className={styles.albumCard}>
-            <img src={album?.image} alt={album?.title} className={styles.albumImage} />
+            <img
+              src={album?.image}
+              alt={album?.title}
+              className={styles.albumImage}
+            />
             <CardContent>
               <Typography variant="h6">{album.title}</Typography>
-              <Chip label={`${album?.follows} Follows`} color="primary" />
+              <Chip
+                label={
+                  title === "Songs"
+                    ? `${album.likes} Likes`
+                    : `${album.follows} Follows`
+                }
+                color="primary"
+              />
             </CardContent>
           </Card>
         ))}
